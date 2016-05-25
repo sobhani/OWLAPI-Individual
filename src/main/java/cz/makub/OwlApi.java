@@ -79,6 +79,12 @@ public class OwlApi {
         OWLClass CarC = factory.getOWLClass("Car", pm);
         OWLClass PersonC = factory.getOWLClass("Person", pm);
         OWLClass WindowsC = factory.getOWLClass("windows", pm);
+        
+        
+         OWLObjectProperty participateIn = factory.getOWLObjectProperty(IRI.create(BASE_URL1 + "participateIn"));
+        OWLObjectProperty partOf = factory.getOWLObjectProperty(IRI.create(BASE_URL1 + "partOf"));
+        OWLObjectProperty participant = factory.getOWLObjectProperty(IRI.create(BASE_URL1 + "participant"));
+        OWLObjectProperty hasPart = factory.getOWLObjectProperty(IRI.create(BASE_URL1 + "hasPart"));
 
         Random r = new Random();
 //        Map<String, OWLIndividual> personMap = new HashMap<>();
@@ -86,7 +92,7 @@ public class OwlApi {
             String URL = BASE_URL1 + (Math.abs(r.nextInt(500)));
             //System.out.println("UUURL" + ":" + URL);
             OWLIndividual personIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
-           // System.out.println("piii" + ":" + personIndividual);
+            System.out.println("piii" + ":" + personIndividual);
             Map<String, OWLIndividual> personMap = new HashMap<>();
             personMap.put(URL, personIndividual);
             Set set = personMap.entrySet();
@@ -94,18 +100,17 @@ public class OwlApi {
             while (iterator.hasNext()) {
                 Map.Entry entry = (Map.Entry) iterator.next();
                 System.out.println("Person Key is: " + entry.getKey() + " & " + " value is: " + entry.getValue());
-
-                // for (Map.Entry entry: personMap.entrySet())
-                // System.out.println("Person Key is: " + entry.getKey()+ " & " + " value is: " + entry.getValue());
+//                 for (Map.Entry entry: personMap.entrySet())
+//                 System.out.println("Person Key is: " + entry.getKey()+ " & " + " value is: " + entry.getValue());
                 // entry.getValue();
-                OWLClassAssertionAxiom personAsserion = factory.getOWLClassAssertionAxiom(PersonC, personIndividual);
+               OWLClassAssertionAxiom personAsserion = factory.getOWLClassAssertionAxiom(PersonC, personIndividual);
                 manager.addAxiom(ontology, personAsserion);
 //                File ontologySave = new File("C:\\Users\\so_fa\\Desktop\\saveOwlapi\\Throw2_M_saved.owl");
 //                manager.saveOntology(ontology, IRI.create(ontologySave.toURI()));
 
             }
         }
-
+     
         for (int i = 0; i < 5; i++) {
             String URL = BASE_URL1 + (Math.abs(r.nextInt(100)));
             OWLIndividual eventIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
@@ -124,6 +129,9 @@ public class OwlApi {
             }
 
         }
+    }
+}
+        /*
         // Random r3 = new Random(); 
         for (int i = 0; i < 5; i++) {
             String URL = BASE_URL1 + (Math.abs(r.nextInt(10)));
@@ -215,97 +223,7 @@ public class OwlApi {
      * //OWLObjectPropertyAssertionAxiom axiomAssertion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personIndividual, moveFAIndividual);
      *
      * // OWLObjectPropertyAssertionAxiom axiomAsserion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personIndividual, runIndividual);
-     * ///**   ____________________________________________________________________
-     * //        OWLIndividual CarA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual Alex = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual Martin = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual BreakingA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual DamageA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual ArmA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual IllegalTA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual KickA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual PushA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual RunA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual ThrowA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual WindowsA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual MoveA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual MoveFA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLIndividual MoveSA = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r.nextInt(100)))));
-     * //        OWLClass cls = manager.getOWLDataFactory().getOWLClass(IRI.create(BASE_URL1 + pm));
-     * //        OWLClassAssertionAxiom axiom3 = factory.getOWLClassAssertionAxiom(DamageC, DamageA);
-     * //       manager.addAxiom(ontology, axiom3);
-     * //        OWLClassAssertionAxiom axiom5 = factory.getOWLClassAssertionAxiom(IllegalTC, IllegalTA);
-     * //        manager.addAxiom(ontology, axiom5);
-     * //        OWLClassAssertionAxiom axiom7 = factory.getOWLClassAssertionAxiom(KickC, KickA);
-     * //        manager.addAxiom(ontology, axiom7);
-     * //        OWLClassAssertionAxiom axiom9 = factory.getOWLClassAssertionAxiom(MoveC, MoveA);
-     * //        manager.addAxiom(ontology, axiom7);
-     * //        OWLClassAssertionAxiom axiom11 = factory.getOWLClassAssertionAxiom(FastMove, MoveFA);
-     * //        manager.addAxiom(ontology, axiom11);
-     * //        OWLClassAssertionAxiom axiom12 = factory.getOWLClassAssertionAxiom(EventC, MoveFA);
-     * //        manager.addAxiom(ontology, axiom12);
-     * //        OWLClassAssertionAxiom axiom13 = factory.getOWLClassAssertionAxiom(MoveSlow, MoveSA);
-     * //        manager.addAxiom(ontology, axiom11);
-     * //        OWLClassAssertionAxiom axiom14 = factory.getOWLClassAssertionAxiom(MoveC, MoveSA);
-     * //        manager.addAxiom(ontology, axiom14);
-     * //        OWLClassAssertionAxiom axiom15 = factory.getOWLClassAssertionAxiom(PushC, PushA);
-     * //        manager.addAxiom(ontology, axiom11);
-     * //        OWLClassAssertionAxiom axiom17 = factory.getOWLClassAssertionAxiom(RunC, RunA);
-     * //        manager.addAxiom(ontology, axiom11);
-     * //        OWLClassAssertionAxiom axiom19 = factory.getOWLClassAssertionAxiom(ThrowC, RunA);
-     * //        manager.addAxiom(ontology, axiom11);
-     * //        OWLClassAssertionAxiom axioma = factory.getOWLClassAssertionAxiom(ArmC, ArmA);
-     * //        manager.addAxiom(ontology, axioma);
-     * //        OWLClassAssertionAxiom axiomb = factory.getOWLClassAssertionAxiom(CarC, CarA);
-     * //        manager.addAxiom(ontology, axiomb);
-     * //        OWLClassAssertionAxiom axiomc = factory.getOWLClassAssertionAxiom(PersonC, Alex);
-     * //        manager.addAxiom(ontology, axiomc);
-     * //        OWLClassAssertionAxiom axiomd = factory.getOWLClassAssertionAxiom(PersonC, Martin);
-     * //        manager.addAxiom(ontology, axiomd);
-     * //        OWLClassAssertionAxiom axiome = factory.getOWLClassAssertionAxiom(WindowsC, WindowsA);
-     * //        manager.addAxiom(ontology, axiome);
-     * //System.out.println("print the " + participateIn);
-     * //        OWLObjectPropertyAssertionAxiom axiomAssertion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personIndividual, moveFAIndividual);
-     * //        manager.addAxiom(ontology, axiomAssertion);
-     * //
-     * //        OWLObjectPropertyAssertionAxiom axiomAsserion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personIndividual, runIndividual);
-     * //        manager.addAxiom(ontology, axiomAsserion);
-     * //        OWLObjectPropertyAssertionAxiom axiom23 = factory.getOWLObjectPropertyAssertionAxiom(participateIn, ArmA, MoveFA);
-     * //        manager.addAxiom(ontology, axiom23);
-     * //        OWLObjectPropertyAssertionAxiom axiom24 = factory.getOWLObjectPropertyAssertionAxiom(partOf, ArmA, Alex);
-     * //        manager.addAxiom(ontology, axiom24);
-     * //        OWLObjectPropertyAssertionAxiom axiom25 = factory.getOWLObjectPropertyAssertionAxiom(participateIn, Alex, RunA);
-     * //        manager.addAxiom(ontology, axiom25);
-     * //        OWLObjectPropertyAssertionAxiom axiom26 = factory.getOWLObjectPropertyAssertionAxiom(participant, BreakingA, WindowsA);
-     * //        manager.addAxiom(ontology, axiom26);
-     * //        OWLObjectPropertyAssertionAxiom axiom27 = factory.getOWLObjectPropertyAssertionAxiom(hasPart, CarA, WindowsA);
-     * //        manager.addAxiom(ontology, axiom27);
-     * //        OWLObjectPropertyAssertionAxiom axiom28 = factory.getOWLObjectPropertyAssertionAxiom(hasPart, DamageA, PushA);
-     * //        manager.addAxiom(ontology, axiom28);
-     * //        OWLObjectPropertyAssertionAxiom axiom29 = factory.getOWLObjectPropertyAssertionAxiom(hasPart, DamageA, BreakingA);
-     * //        manager.addAxiom(ontology, axiom29);
-     * //        OWLObjectPropertyAssertionAxiom axiom30 = factory.getOWLObjectPropertyAssertionAxiom(hasPart, DamageA, KickA);
-     * //        manager.addAxiom(ontology, axiom30);
-     * //        OWLObjectPropertyAssertionAxiom axiom31 = factory.getOWLObjectPropertyAssertionAxiom(partOf, DamageA, ThrowA);
-     * //        manager.addAxiom(ontology, axiom31);
-     * //        OWLObjectPropertyAssertionAxiom axiom32 = factory.getOWLObjectPropertyAssertionAxiom(hasPart, IllegalTA, RunA);
-     * //        manager.addAxiom(ontology, axiom32);
-     * //        OWLObjectPropertyAssertionAxiom axiom33 = factory.getOWLObjectPropertyAssertionAxiom(hasPart, IllegalTA, ThrowA);
-     * //        manager.addAxiom(ontology, axiom33);
-     * //        OWLObjectPropertyAssertionAxiom axiom34 = factory.getOWLObjectPropertyAssertionAxiom(participant, KickA, CarA);
-     * //        manager.addAxiom(ontology, axiom34);
-     * //        OWLObjectPropertyAssertionAxiom axiom35 = factory.getOWLObjectPropertyAssertionAxiom(participateIn, Martin, PushA);
-     * //        manager.addAxiom(ontology, axiom35);
-     * //        OWLObjectPropertyAssertionAxiom axiom36 = factory.getOWLObjectPropertyAssertionAxiom(participateIn, Martin, BreakingA);
-     * //        manager.addAxiom(ontology, axiom36);
-     * //        OWLObjectPropertyAssertionAxiom axiom37 = factory.getOWLObjectPropertyAssertionAxiom(participateIn, Martin, KickA);
-     * //        manager.addAxiom(ontology, axiom37);
-     * //        OWLObjectPropertyAssertionAxiom axiom38 = factory.getOWLObjectPropertyAssertionAxiom(participant, CarA, PushA);
-     * //        manager.addAxiom(ontology, axiom38);
-     * //        OWLObjectPropertyAssertionAxiom axiom39 = factory.getOWLObjectPropertyAssertionAxiom(participant, RunA, Alex);
-     * //        manager.addAxiom(ontology, axiom39);
-     * //        OWLObjectPropertyAssertionAxiom axiom340 = factory.getOWLObjectPropertyAssertionAxiom(partOf, ThrowA, IllegalTA);
-     * //        manager.addAxiom(ontology, axiom340);
+     * ///**  
      * // _________________________________________________________________________________
      * //    File ontologySave = new File("C:\\Users\\so_fa\\Desktop\\saveOwlapi\\Throw2_saved.owl");
      * //
