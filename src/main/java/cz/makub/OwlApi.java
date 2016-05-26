@@ -168,7 +168,7 @@ public class OwlApi {
             OWLClassAssertionAxiom personAsserion = factory.getOWLClassAssertionAxiom(EventC, eventIndividual);
             manager.addAxiom(ontology, personAsserion);
            
-//            //  OWLObjectPropertyAssertionAxiom axiomAssertion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personMap.get(URL),eventMap.get(URL));
+            OWLObjectPropertyAssertionAxiom axiomAssertion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personMap.get(URL),eventMap.get(URL));
         
              }
              
@@ -237,7 +237,8 @@ public class OwlApi {
 
            /* Map<String, OWLIndividual>
              * vehicleMap = new HashMap<>(); //Random r = new Random(); for (int i = 0; i <
-             * 5; i++) { String URL = BASE_URL1 + (Math.abs(r.nextInt(50))); OWLIndividual
+             * 5; i++) 
+{ String URL = BASE_URL1 + (Math.abs(r.nextInt(50))); OWLIndividual
              * vehicleIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
              * vehicleMap.put(URL, vehicleIndividual); for (String key :
              * vehicleMap.keySet()) { System.out.println("Vehicke Key is: " + key + " & " +
@@ -245,26 +246,8 @@ public class OwlApi {
              * = factory.getOWLClassAssertionAxiom(CarC, vehicleIndividual);
              * manager.addAxiom(ontology, vehicleAsserion); }
              *
-             * // Random r10 = new Random(); // for (int counter = 1;counter <= 5; counter  ++) {
-             * //         OWLIndividual runIndividual = factory.getOWLNamedIndividual(IRI.create(BASE_URL1 + (Math.abs(r10.nextInt(900)))));
-             * //        OWLClassAssertionAxiom runAsserion = factory.getOWLClassAssertionAxiom(RunC, runIndividual);
-             * //        manager.addAxiom(ontology, runAsserion);
-             * //    }
-             * OWLObjectProperty participateIn = factory.getOWLObjectProperty(IRI.create(BASE_URL1 + "participateIn"));
-             * OWLObjectProperty partOf = factory.getOWLObjectProperty(IRI.create(BASE_URL1 + "partOf"));
-             * OWLObjectProperty participant = factory.getOWLObjectProperty(IRI.create(BASE_URL1 + "participant"));
-             * OWLObjectProperty hasPart = factory.getOWLObjectProperty(IRI.create(BASE_URL1 + "hasPart"));
-             *
-             * File ontologySave = new File("C:\\Users\\so_fa\\Desktop\\saveOwlapi\\Throw2_M_saved.owl");
-             * manager.saveOntology(ontology, IRI.create(ontologySave.toURI()));
-             *
-             * //
-             * }
-             * }
-             * }
-             * //OWLObjectPropertyAssertionAxiom axiomAssertion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personIndividual, moveFAIndividual);
-             *
-             * // OWLObjectPropertyAssertionAxiom axiomAsserion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personIndividual, runIndividual);
+           
+          
              * ///**  
              * // _________________________________________________________________________________
 
