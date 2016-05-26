@@ -173,6 +173,9 @@ public class OwlApi {
             OWLClassAssertionAxiom personAsserion = factory.getOWLClassAssertionAxiom(EventC, eventIndividual);
             manager.addAxiom(ontology, personAsserion);
            
+            
+            // THE problem is here for axiom assertion , previously it was the same (even with random or with out randon method, when we want to assert this section we need to assert value which is person and event individual to the participate in , but here the person.get(personIndividual ) is in another loop so can not be added here_
+            
             OWLObjectPropertyAssertionAxiom axiomAssertion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personMap.get(personIndividual),eventMap.get( eventIndividual));
           // OWLObjectPropertyAssertionAxiom axiomAssertion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personMap.get(URL),eventMap.get(URL));
              }
