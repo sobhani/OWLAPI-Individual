@@ -143,9 +143,10 @@ public class OwlApi {
         for (int i = 0; i < 2; i++) {
             String URL = BASE_URL1 + (Math.abs(r.nextInt(500)));
             OWLIndividual personIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
-           // System.out.println("piii" + ":" + personIndividual);
+           System.out.println("piii" + ":" + personIndividual);
+            System.out.println("u" + ":" + URL );
             personMap.put(URL, personIndividual);
-             System.out.println(personMap.get("Person Key is: " +URL));
+             System.out.println(personMap.get("Person Key is: " + URL));
 //            Set set = personMap.entrySet();
 //            Iterator iterator = set.iterator();
 //            Map.Entry personentry = (Map.Entry) iterator.next();
@@ -155,101 +156,111 @@ public class OwlApi {
             manager.addAxiom(ontology, personAsserion);
             
         }
-             for (int i = 0; i < 2; i++) {
-            String URL = BASE_URL1 + (Math.abs(r.nextInt(500)));
-            OWLIndividual eventIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
-            System.out.println("piii" + ":" + eventIndividual);
-            personMap.put(URL, eventIndividual);
-            Set set = personMap.entrySet();
-            Iterator iterator = set.iterator();
-            Map.Entry personentry = (Map.Entry) iterator.next();
-            System.out.println("Event Key is: " + personentry.getKey() + " & " + " value is: " + personentry.getValue());
-
-            OWLClassAssertionAxiom personAsserion = factory.getOWLClassAssertionAxiom(EventC, eventIndividual);
-            manager.addAxiom(ontology, personAsserion);
-           
-            OWLObjectPropertyAssertionAxiom axiomAssertion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personMap.get(URL),eventMap.get(URL));
         
-             }
-             
-             for (int i = 0; i < 5; i++) {
-             String URL = BASE_URL1 + (Math.abs(r.nextInt(10)));
-             OWLIndividual moveIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
-             Map<String, OWLIndividual> moveMap = new HashMap<>();
-             moveMap.put(URL, moveIndividual);
-             Set set = moveMap.entrySet();
-             Iterator iterator = set.iterator();
-//             while (iterator.hasNext()) {
-//             Map.Entry entry = (Map.Entry) iterator.next();
-//             System.out.println("Move Key is: " + entry.getKey() + " & " + " value is: " + entry.getValue());
-             //            for (String key : moveMap.keySet()) {
-             //                System.out.println("Move Key is: " + key + " & " + " value is: "
-             //                        + moveMap.get(key));
-             OWLClassAssertionAxiom movetAsserion = factory.getOWLClassAssertionAxiom(MoveC, moveIndividual);
-             manager.addAxiom(ontology, movetAsserion);
-
-             }
-             
-              // Random r3 = newRandom();
-             for (int i = 0; i < 5; i++) {
-             String URL = BASE_URL1 + (Math.abs(r.nextInt(1000)));
-             OWLIndividual kickIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
-             Map< String, OWLIndividual> kickMap = new HashMap<>();
-             kickMap.put(URL, kickIndividual);
-             Set set = kickMap.entrySet();
-             Iterator iterator = set.iterator();
-//             while (iterator.hasNext()) {
-//             Map.Entry entry = (Map.Entry) iterator.next();
-//             System.out.println("Kick Key is: " + entry.getKey() + " & " + " value is: " + entry.getValue());
-             //            for (String key : kickMap.keySet()) {
-             //                System.out.println("kick Key is: " + key + " & " + " value is: " + kickMap.get(key));
-             OWLClassAssertionAxiom kickAsserion = factory.getOWLClassAssertionAxiom(KickC, kickIndividual);
-             manager.addAxiom(ontology, kickAsserion);
-             }
-             
-
-             // Random r3 = new Random(); //
-             for (int i = 0; i < 5; i++) {
-             String URL = BASE_URL1 + (Math.abs(r.nextInt(20)));
-             OWLIndividual pushIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
-             Map< String, OWLIndividual> pushMap = new HashMap<>();
-             pushMap.put(URL, pushIndividual);
-             Set set = pushMap.entrySet();
-//             Iterator iterator = set.iterator();
-//             while (iterator.hasNext()) {
-//             Map.Entry entry = (Map.Entry) iterator.next();
-//             System.out.println("Push Key is: " + entry.getKey() + " & " + " value is: " + entry.getValue());
-             //            for (String key : pushMap.keySet()) {
-             //                System.out.println("Push Key is: " + key + " & " + " value is: "
-             //                        + pushMap.get(key));
-             OWLClassAssertionAxiom pushAsserion
-             = factory.getOWLClassAssertionAxiom(PushC, pushIndividual);
-             manager.addAxiom(ontology, pushAsserion);
-             }
-             
-    
-             File ontologySave = new File("C:\\Users\\so_fa\\Desktop\\saveOwlapi\\Throw2_M_saved.owl");
-             manager.saveOntology(ontology, IRI.create(ontologySave.toURI()));
-             } 
+        
+        
+//             for (int i = 0; i < 2; i++) {
+//            String URL = BASE_URL1 + (Math.abs(r.nextInt(500)));
+//            OWLIndividual eventIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
+//            System.out.println("piii" + ":" + eventIndividual);
+//            personMap.put(URL, eventIndividual);
+//            Set set = personMap.entrySet();
+//            Iterator iterator = set.iterator();
+//            Map.Entry personentry = (Map.Entry) iterator.next();
+//            System.out.println("Event Key is: " + personentry.getKey() + " & " + " value is: " + personentry.getValue());
+//
+//            OWLClassAssertionAxiom personAsserion = factory.getOWLClassAssertionAxiom(EventC, eventIndividual);
+//            manager.addAxiom(ontology, personAsserion);
+//           
+//            OWLObjectPropertyAssertionAxiom axiomAssertion = factory.getOWLObjectPropertyAssertionAxiom(participateIn, personMap.get(URL),eventMap.get(URL));
+//     //   
+//             }
+    }
 }
 
 
 
-           /* Map<String, OWLIndividual>
-             * vehicleMap = new HashMap<>(); //Random r = new Random(); for (int i = 0; i <
-             * 5; i++) 
-{ String URL = BASE_URL1 + (Math.abs(r.nextInt(50))); OWLIndividual
-             * vehicleIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
-             * vehicleMap.put(URL, vehicleIndividual); for (String key :
-             * vehicleMap.keySet()) { System.out.println("Vehicke Key is: " + key + " & " +
-             * " value is: " + vehicleMap.get(key)); OWLClassAssertionAxiom vehicleAsserion
-             * = factory.getOWLClassAssertionAxiom(CarC, vehicleIndividual);
-             * manager.addAxiom(ontology, vehicleAsserion); }
-             *
-           
-          
-             * ///**  
-             * // _________________________________________________________________________________
+//
+//           
+//             
+//             for (int i = 0; i < 5; i++) {
+//             String URL = BASE_URL1 + (Math.abs(r.nextInt(10)));
+//             OWLIndividual moveIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
+//             Map<String, OWLIndividual> moveMap = new HashMap<>();
+//             moveMap.put(URL, moveIndividual);
+//             Set set = moveMap.entrySet();
+//             Iterator iterator = set.iterator();
+////             while (iterator.hasNext()) {
+////             Map.Entry entry = (Map.Entry) iterator.next();
+////             System.out.println("Move Key is: " + entry.getKey() + " & " + " value is: " + entry.getValue());
+//             //            for (String key : moveMap.keySet()) {
+//             //                System.out.println("Move Key is: " + key + " & " + " value is: "
+//             //                        + moveMap.get(key));
+//             OWLClassAssertionAxiom movetAsserion = factory.getOWLClassAssertionAxiom(MoveC, moveIndividual);
+//             manager.addAxiom(ontology, movetAsserion);
+//
+//             }
+//             
+//              // Random r3 = newRandom();
+//             for (int i = 0; i < 5; i++) {
+//             String URL = BASE_URL1 + (Math.abs(r.nextInt(1000)));
+//             OWLIndividual kickIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
+//             Map< String, OWLIndividual> kickMap = new HashMap<>();
+//             kickMap.put(URL, kickIndividual);
+//             Set set = kickMap.entrySet();
+//             Iterator iterator = set.iterator();
+////             while (iterator.hasNext()) {
+////             Map.Entry entry = (Map.Entry) iterator.next();
+////             System.out.println("Kick Key is: " + entry.getKey() + " & " + " value is: " + entry.getValue());
+//             //            for (String key : kickMap.keySet()) {
+//             //                System.out.println("kick Key is: " + key + " & " + " value is: " + kickMap.get(key));
+//             OWLClassAssertionAxiom kickAsserion = factory.getOWLClassAssertionAxiom(KickC, kickIndividual);
+//             manager.addAxiom(ontology, kickAsserion);
+//             }
+//             
+//
+//             // Random r3 = new Random(); //
+//             for (int i = 0; i < 5; i++) {
+//             String URL = BASE_URL1 + (Math.abs(r.nextInt(20)));
+//             OWLIndividual pushIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
+////             Map< String, OWLIndividual> pushMap = new HashMap<>();
+//             pushMap.put(URL, pushIndividual);
+//             Set set = pushMap.entrySet();
+////             Iterator iterator = set.iterator();
+////             while (iterator.hasNext()) {
+////             Map.Entry entry = (Map.Entry) iterator.next();
+////             System.out.println("Push Key is: " + entry.getKey() + " & " + " value is: " + entry.getValue());
+//             //            for (String key : pushMap.keySet()) {
+//             //                System.out.println("Push Key is: " + key + " & " + " value is: "
+//             //                        + pushMap.get(key));
+//             OWLClassAssertionAxiom pushAsserion
+//             = factory.getOWLClassAssertionAxiom(PushC, pushIndividual);
+//             manager.addAxiom(ontology, pushAsserion);
+//             }
+//             
+//    
+//             File ontologySave = new File("C:\\Users\\so_fa\\Desktop\\saveOwlapi\\Throw2_M_saved.owl");
+//             manager.saveOntology(ontology, IRI.create(ontologySave.toURI()));
+//             } 
+//}
+//
+//
+//
+//           /* Map<String, OWLIndividual>
+//             * vehicleMap = new HashMap<>(); //Random r = new Random(); for (int i = 0; i <
+//             * 5; i++) 
+//{ String URL = BASE_URL1 + (Math.abs(r.nextInt(50))); OWLIndividual
+//             * vehicleIndividual = factory.getOWLNamedIndividual(IRI.create(URL));
+//             * vehicleMap.put(URL, vehicleIndividual); for (String key :
+//             * vehicleMap.keySet()) { System.out.println("Vehicke Key is: " + key + " & " +
+//             * " value is: " + vehicleMap.get(key)); OWLClassAssertionAxiom vehicleAsserion
+//             * = factory.getOWLClassAssertionAxiom(CarC, vehicleIndividual);
+//             * manager.addAxiom(ontology, vehicleAsserion); }
+//             *
+//           
+//          
+//             * ///**  
+//             * // _________________________________________________________________________________
 
 //}
 // Use Map<OWLClass, Integer> - to create a list of total individuals needed to instantiate the class.
